@@ -19,14 +19,14 @@
         jar="/Users/danielwang/Code/quirky-quarks/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="040421f86e5e05a3aea0f79e92e8064460494e3f">
+        sha1="6ce4016b3d84a5330f82f3d0281f7b0ee708d4d1">
         <dex dex="/Users/danielwang/Code/quirky-quarks/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c60e307f997450d79d310ab380b207e095ee8853/classes.dex" />
     </item>
     <item
         jar="/Users/danielwang/Code/quirky-quarks/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="dddb0282f58cb89b87fb231c42f5574f79ececc8">
+        sha1="c7eaf84f32504634e622e04169446d6c2f91e004">
         <dex dex="/Users/danielwang/Code/quirky-quarks/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_eabeaa39fc2eb88ca7a15ca3a64d14b08e549bbf/classes.dex" />
     </item>
     <item
