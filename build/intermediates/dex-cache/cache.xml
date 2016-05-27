@@ -5,7 +5,7 @@
         jar="/Users/danielwang/Code/quirky-quarks/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="2311b43802b511925f343873929f4bfaa0179916">
+        sha1="e8e0298744a650af5acd9e2812b0a1d2bf16fd2d">
         <dex dex="/Users/danielwang/Code/quirky-quarks/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_eabeaa39fc2eb88ca7a15ca3a64d14b08e549bbf/classes.dex" />
     </item>
 
