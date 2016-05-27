@@ -1,7 +1,9 @@
 package org.beautiful_butterflies.quirky_quarks;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,7 +19,19 @@ public class MainActivity extends AppCompatActivity {
         playButton = (Button) findViewById(R.id.playButton);
         standardModelButton = (Button) findViewById(R.id.standardModelButton);
 
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Game.class));
+            }
+        });
 
+        standardModelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, StandardModel.class));
+            }
+        });
     }
 }
 
