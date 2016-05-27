@@ -16,13 +16,5 @@ public class StandardModel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standard_model);
 
-        modelToMain = (Button) findViewById(R.id.modelToMain);
-
-        modelToMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(StandardModel.this, MainActivity.class));
-            }
-        });
     }
 }
