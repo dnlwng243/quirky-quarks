@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    
+
     Button playButton;
     Button standardModelButton;
 
