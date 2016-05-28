@@ -1,4 +1,23 @@
 <resources>
     <string name="app_name">quirky-quarks</string>
     <string name="border_wallpaper_background_image">border/wallpaper background image</string>
+    <string name="the_standard_model_of_n_particle_physics">The Standard Model of \n Particle Physics</string>
+    <string name="tap_any_icon_above_for_a_brief_description">Tap any icon above\nfor a brief description.</string>
+    <string name="up_quark_image">up-quark image</string>
+    <string name="charm_quark_image">charm-quark image</string>
+    <string name="top_quark_image">top-quark image</string>
+    <string name="down_quark_image">down-quark image</string>
+    <string name="strange_quark_image">strange-quark image</string>
+    <string name="bottom_quark_image">bottom-quark image</string>
+    <string name="electron_image">electron image</string>
+    <string name="muon_image">muon image</string>
+    <string name="tau_image">tau image</string>
+    <string name="electron_neutrino_image">electron neutrino image</string>
+    <string name="muon_neutrino_image">muon neutrino image</string>
+    <string name="tau_neutrino_image">tau neutrino image</string>
+    <string name="gluon_image">gluon image</string>
+    <string name="photon_image">photon image</string>
+    <string name="z_boson_image">Z boson image</string>
+    <string name="w_boson_image">W boson image</string>
+    <string name="higgs_boson_image">Higgs boson image</string>
 </resources>
