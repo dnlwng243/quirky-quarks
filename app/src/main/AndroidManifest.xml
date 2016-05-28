@@ -8,15 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game" />
-        <activity android:name=".StandardModel" />
+        <activity android:name=".Game"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".StandardModel"
+            android:screenOrientation="portrait"/>
         <activity android:name=".particle_descriptions.UpQuark" />
         <activity android:name=".particle_descriptions.CharmQuark" />
         <activity android:name=".particle_descriptions.TopQuark" />
