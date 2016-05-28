@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">quirky-quarks</string>
+    <string name="border_wallpaper_background_image">border/wallpaper background image</string>
 </resources>
