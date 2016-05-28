@@ -21,4 +21,10 @@
     <string name="w_boson_image">W boson image</string>
     <string name="higgs_boson_image">Higgs boson image</string>
     <string name="loading">Loading ...</string>
+    <string name="pause_button">pause button</string>
+    <string name="button_to_pseudoscalar_meson_crafting_overlay">button to pseudoscalar meson crafting overlay</string>
+    <string name="button_to_vector_meson_crafting_overlay">button to vector meson crafting overlay</string>
+    <string name="button_to_isospin_baryon_octet_crafting_overlay">button to isospin baryon octet crafting overlay</string>
+    <string name="button_to_isospin_baryon_decuplet_crafting_overlay">button to isospin baryon decuplet crafting overlay</string>
+    <string name="button_to_standard_model_selection_overlay">button to standard model selection overlay</string>
 </resources>
