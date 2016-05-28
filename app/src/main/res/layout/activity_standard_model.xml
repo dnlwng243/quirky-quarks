@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="org.beautiful_butterflies.quirky_quarks.StandardModel">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/the_standard_model_of_n_particle_physics"
+        android:id="@+id/textView"
+        android:textAlignment="center"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/upQuarkImage"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/up_quark" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/charmQuarkImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/charm_quark"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="84dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/topQuarkImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/top_quark"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="158dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/downQuarkImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/down_quark"
+        android:layout_marginTop="84dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/strangeQuarkImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/strange_quark"
+        android:layout_marginTop="84dp"
+        android:layout_marginLeft="84dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomQuarkImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/bottom_quark"
+        android:layout_marginTop="84dp"
+        android:layout_marginLeft="158dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/electronImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/electron"
+        android:layout_marginTop="158dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/muonImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/muon"
+        android:layout_marginTop="158dp"
+        android:layout_marginLeft="84dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tauImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/tau"
+        android:layout_marginTop="158dp"
+        android:layout_marginLeft="158dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/electronNeutrinoImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/electron_neutrino"
+        android:layout_marginTop="232dp"
+        android:layout_marginLeft="10dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/muonNeutrinoImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/muon_neutrino"
+        android:layout_marginTop="232dp"
+        android:layout_marginLeft="84dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tauNeutrinoImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/tau_neutrino"
+        android:layout_marginTop="232dp"
+        android:layout_marginLeft="158dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gluonImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/gluon"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="232dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/photonImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/photon"
+        android:layout_marginTop="84dp"
+        android:layout_marginLeft="232dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/zBosonImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/z_boson"
+        android:layout_marginTop="158dp"
+        android:layout_marginLeft="232dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wBosonImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/w_boson"
+        android:layout_marginTop="232dp"
+        android:layout_marginLeft="232dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/higgsBosonImage"
+        android:layout_below="@+id/textView"
+        android:src="@drawable/higgs_boson"
+        android:layout_marginTop="306dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Tap any icon above\nfor a brief description."
+        android:id="@+id/textView2"
+        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/higgsBosonImage"
+        android:layout_alignRight="@+id/textView"
+        android:layout_alignEnd="@+id/textView" />
+
+</RelativeLayout>
