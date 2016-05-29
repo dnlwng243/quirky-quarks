@@ -3,7 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.beautiful_butterflies.quirky_quarks.Game">
+    tools:context=".game.Game">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/catBackgroundView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/space_cat"
+        android:contentDescription="@string/border_wallpaper_background_image"
+        android:visibility="visible"
+        android:scaleType="centerCrop" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -15,10 +30,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/space_cat"
         android:contentDescription="@string/border_wallpaper_background_image"
-        android:visibility="visible"
-        android:scaleType="centerCrop" />
+        android:visibility="invisible"
+        android:scaleType="centerCrop"
+        android:src="@color/ripple_material_dark" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,7 +61,7 @@
         android:layout_above="@+id/pseudoscalarMesonButton"
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="false"
-        android:layout_alignStart="@id/gameBackgroundView" />
+        android:layout_alignStart="@id/catBackgroundView" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -57,7 +72,7 @@
         android:layout_marginStart="40dp"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/pauseButton"
-        android:layout_alignBottom="@+id/gameBackgroundView" />
+        android:layout_alignBottom="@+id/catBackgroundView" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -68,7 +83,7 @@
         android:layout_marginStart="40dp"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/pseudoscalarMesonButton"
-        android:layout_alignBottom="@+id/gameBackgroundView" />
+        android:layout_alignBottom="@+id/catBackgroundView" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -79,7 +94,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/isospinBaryonDecupletButton"
         android:layout_marginEnd="40dp"
-        android:layout_alignBottom="@+id/gameBackgroundView" />
+        android:layout_alignBottom="@+id/catBackgroundView" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -87,7 +102,7 @@
         android:id="@+id/isospinBaryonDecupletButton"
         android:src="@android:drawable/ic_menu_add"
         android:contentDescription="@string/button_to_isospin_baryon_decuplet_crafting_overlay"
-        android:layout_alignBottom="@+id/gameBackgroundView"
+        android:layout_alignBottom="@+id/catBackgroundView"
         android:layout_toStartOf="@+id/recipeButton"
         android:layout_marginEnd="40dp" />
 
@@ -99,5 +114,6 @@
         android:src="@android:drawable/ic_menu_compass"
         android:contentDescription="@string/button_to_standard_model_selection_overlay"
         android:layout_above="@+id/isospinBaryonDecupletButton"
-        android:layout_alignEnd="@+id/gameBackgroundView" />
+        android:layout_alignEnd="@+id/catBackgroundView" />
+
 </RelativeLayout>

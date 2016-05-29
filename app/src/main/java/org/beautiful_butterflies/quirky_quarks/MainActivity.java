@@ -4,8 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
+
+import org.beautiful_butterflies.quirky_quarks.game.Game;
 
 public class MainActivity extends AppCompatActivity {
 
