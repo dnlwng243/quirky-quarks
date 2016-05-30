@@ -15,10 +15,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Bottom Quark"
         android:id="@+id/textView3"
+        android:textIsSelectable="false"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textIsSelectable="false" />
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -34,7 +33,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Mass: 4.2 GeV/c^2"
         android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/textView7"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
 
@@ -55,5 +54,14 @@
         android:id="@+id/textView6"
         android:layout_below="@+id/textView5"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Third Generation"
+        android:id="@+id/textView7"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
