@@ -1,7 +1,6 @@
 package org.beautiful_butterflies.quirky_quarks.game;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.opengl.GLSurfaceView;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.beautiful_butterflies.quirky_quarks.R;
+import org.beautiful_butterflies.quirky_quarks.game.graphics.MyGLSurfaceView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,7 +27,6 @@ public class Game extends AppCompatActivity {
     int timerVal;
 
     ImageView catBackgroundView;
-    ImageView gameBackgroundView;
     TextView countdownTextView;
     ImageButton pauseButton;
     ImageButton pseudoscalarMesonButton;
@@ -35,6 +34,8 @@ public class Game extends AppCompatActivity {
     ImageButton isospinBaryonOctetButton;
     ImageButton isospinBaryonDecupletButton;
     ImageButton recipeButton;
+
+    GLSurfaceView glView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +50,35 @@ public class Game extends AppCompatActivity {
 
         { /* Define views */
             catBackgroundView = (ImageView) findViewById(R.id.catBackgroundView);
-            gameBackgroundView = (ImageView) findViewById(R.id.gameBackgroundView);
             countdownTextView = (TextView) findViewById(R.id.countdownTextView);
             pauseButton = (ImageButton) findViewById(R.id.pauseButton);
             pseudoscalarMesonButton = (ImageButton) findViewById(R.id.pseudoscalarMesonButton);
             vectorMesonButton = (ImageButton) findViewById(R.id.vectorMesonButton);
+            vectorMesonButton = (ImageButton) findViewById(R.id.vectorMesonButton);
             isospinBaryonOctetButton = (ImageButton) findViewById(R.id.isospinBaryonOctetButton);
             isospinBaryonDecupletButton = (ImageButton) findViewById(R.id.isospinBaryonDecupletButton);
-            recipeButton = (ImageButton) findViewById(R.id.recipeButton);
+            {
+                recipeButton = (ImageButton) findViewById(R.id.recipeButton);
+                recipeButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        launch12BosonSelect();
+                    }
+                });
+            }
         }
 
         queueNewGame();
+    }
+
+    private void launch12BosonSelect() {
+        setContentView(new MyGLSurfaceView(this));
+
+        // TODO: Implement Ray Picking
+    }
+
+    private void launch32BosonSelect() {
+
     }
 
     private void showGameControls(boolean bool) {
@@ -77,7 +96,6 @@ public class Game extends AppCompatActivity {
         countdownTextView.setLayoutParams(centerLayout);
 
         showGameControls(false);
-        setBackground("cat");
 
         timerVal = 5;
         timer.scheduleAtFixedRate(new TimerTask() {
@@ -106,27 +124,12 @@ public class Game extends AppCompatActivity {
         }, 0, 1000);
     }
 
-
-    private void setBackground(String id) {
-        switch(id) {
-            case "cat":
-                catBackgroundView.setVisibility(View.VISIBLE);
-                gameBackgroundView.setVisibility(View.INVISIBLE);
-                break;
-            case "game":
-                catBackgroundView.setVisibility(View.INVISIBLE);
-                gameBackgroundView.setVisibility(View.VISIBLE);
-                break;
-        }
-    }
-
     private void initGameLayout() {
         RelativeLayout.LayoutParams origLayout = (RelativeLayout.LayoutParams) countdownTextView.getLayoutParams();
         origLayout.topMargin -= 540;
         countdownTextView.setLayoutParams(origLayout);
         countdownTextView.setTextSize(20f);
 
-        setBackground("game");
         showGameControls(true);
     }
 
