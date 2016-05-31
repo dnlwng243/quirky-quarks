@@ -28,7 +28,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="17dp"
         android:src="@drawable/up_quark" />
 
     <ImageView
@@ -38,7 +38,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/charm_quark"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="84dp"/>
+        android:layout_marginLeft="91dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/top_quark"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="158dp"/>
+        android:layout_marginLeft="165dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/down_quark"
         android:layout_marginTop="84dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="17dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/strange_quark"
         android:layout_marginTop="84dp"
-        android:layout_marginLeft="84dp"/>
+        android:layout_marginLeft="91dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/bottom_quark"
         android:layout_marginTop="84dp"
-        android:layout_marginLeft="158dp"/>
+        android:layout_marginLeft="165dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/electron"
         android:layout_marginTop="158dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="17dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/muon"
         android:layout_marginTop="158dp"
-        android:layout_marginLeft="84dp"/>
+        android:layout_marginLeft="91dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/tau"
         android:layout_marginTop="158dp"
-        android:layout_marginLeft="158dp"/>
+        android:layout_marginLeft="165dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/electron_neutrino"
         android:layout_marginTop="232dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="17dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -119,7 +119,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/muon_neutrino"
         android:layout_marginTop="232dp"
-        android:layout_marginLeft="84dp"/>
+        android:layout_marginLeft="91dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/tau_neutrino"
         android:layout_marginTop="232dp"
-        android:layout_marginLeft="158dp"/>
+        android:layout_marginLeft="165dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/gluon"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="232dp"/>
+        android:layout_marginLeft="239dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/photon"
         android:layout_marginTop="84dp"
-        android:layout_marginLeft="232dp"/>
+        android:layout_marginLeft="239dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/z_boson"
         android:layout_marginTop="158dp"
-        android:layout_marginLeft="232dp"/>
+        android:layout_marginLeft="239dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -164,7 +164,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/w_boson"
         android:layout_marginTop="232dp"
-        android:layout_marginLeft="232dp"/>
+        android:layout_marginLeft="239dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -173,7 +173,7 @@
         android:layout_below="@+id/textView"
         android:src="@drawable/higgs_boson"
         android:layout_marginTop="306dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="17dp"/>
 
     <TextView
         android:layout_width="wrap_content"
