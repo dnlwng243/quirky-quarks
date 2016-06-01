@@ -5,10 +5,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/higgs_boson"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -37,7 +37,7 @@
         <activity android:name=".particle_descriptions.MuonNeutrino" />
         <activity android:name=".particle_descriptions.TauNeutrino" />
         <activity android:name=".particle_descriptions.WBoson" />
-        <activity android:name=".particle_descriptions.HiggsBoson"></activity>
+        <activity android:name=".particle_descriptions.HiggsBoson" />
     </application>
 
 </manifest>

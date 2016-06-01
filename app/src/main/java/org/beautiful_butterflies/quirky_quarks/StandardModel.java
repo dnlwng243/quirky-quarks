@@ -1,8 +1,11 @@
 package org.beautiful_butterflies.quirky_quarks;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -50,7 +53,6 @@ public class StandardModel extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_standard_model);
-
         upQuarkImage = (ImageView) findViewById(R.id.upQuarkImage);
         charmQuarkImage = (ImageView) findViewById(R.id.charmQuarkImage);
         topQuarkImage = (ImageView) findViewById(R.id.topQuarkImage);
@@ -187,5 +189,364 @@ public class StandardModel extends AppCompatActivity {
                 startActivity(new Intent(StandardModel.this, HiggsBoson.class));
             }
         });
+
+        upQuarkImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    upQuarkImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    upQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        upQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        charmQuarkImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    charmQuarkImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    charmQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        charmQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        topQuarkImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    topQuarkImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    topQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        topQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        downQuarkImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    downQuarkImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    downQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        downQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        strangeQuarkImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    strangeQuarkImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    strangeQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        strangeQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        bottomQuarkImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    bottomQuarkImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    bottomQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        bottomQuarkImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        electronImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    electronImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    electronImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        electronImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        muonImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    muonImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    muonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        muonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        tauImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    tauImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    tauImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        tauImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        electronNeutrinoImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    electronNeutrinoImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    electronNeutrinoImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        electronNeutrinoImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        muonNeutrinoImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    muonNeutrinoImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    muonNeutrinoImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        muonNeutrinoImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        tauNeutrinoImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    tauNeutrinoImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    tauNeutrinoImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        tauNeutrinoImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        gluonImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    gluonImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    gluonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        gluonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        photonImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    photonImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    photonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        photonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        zBosonImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    zBosonImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    zBosonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        zBosonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        wBosonImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    wBosonImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    wBosonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        wBosonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
+        higgsBosonImage.setOnTouchListener(new View.OnTouchListener() {
+            private Rect rect;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    higgsBosonImage.setColorFilter(Color.argb(50, 0, 0, 0));
+                    rect = new Rect(v.getLeft(), v.getTop(), v.getRight(), v.getBottom());
+                }
+                if(event.getAction() == MotionEvent.ACTION_UP){
+                    higgsBosonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                }
+                if(event.getAction() == MotionEvent.ACTION_MOVE){
+                    if(!rect.contains(v.getLeft() + (int) event.getX(), v.getTop() + (int) event.getY())){
+                        higgsBosonImage.setColorFilter(Color.argb(0, 0, 0, 0));
+                    }
+                }
+                return false;
+            }
+        });
+
     }
+
 }
