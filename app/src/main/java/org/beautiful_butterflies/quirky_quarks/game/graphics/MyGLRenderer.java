@@ -58,7 +58,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
         pyramid.draw(gl);
 
-        objRotation = (objRotation - 2.0f) % 360f;
+        // objRotation = (objRotation - 2.0f) % 360f;
     }
 
 }

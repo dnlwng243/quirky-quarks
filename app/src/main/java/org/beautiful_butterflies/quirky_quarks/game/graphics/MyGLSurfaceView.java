@@ -2,13 +2,14 @@ package org.beautiful_butterflies.quirky_quarks.game.graphics;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 public class MyGLSurfaceView extends GLSurfaceView {
     MyGLRenderer renderer;
 
-    public MyGLSurfaceView(Context context) {
-        super(context);
+    public MyGLSurfaceView(Context context, AttributeSet attrs) {
+        super(context, attrs);
 
         renderer = new MyGLRenderer(context);
         this.setRenderer(renderer);
