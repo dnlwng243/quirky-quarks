@@ -22,23 +22,36 @@ public class Triangle extends GameObject {
     private byte[] indices = { 0, 1, 2 };
 
     private float[] colors = {
-            0.0f, 0.0f, 0.0f, 1.0f, // 0. Black
+            1.0f, 1.0f, 1.0f, 1.0f, // 0. White
             1.0f, 1.0f, 1.0f, 1.0f, // 1. White
-            0.0f, 0.0f, 1.0f, 1.0f  // 2. Blue
+            1.0f, 1.0f, 1.0f, 1.0f  // 2. White
     };
 
     public Triangle() {
         position = new PointF(0, 0);
+        rotation = 0;
         initializeBuffers();
     }
 
     public Triangle(float scale, float x, float y) {
         position = new PointF(x, y);
+        rotation = 0;
 
         for(int i = 0; i < vertices.length; i++)
             vertices[i] *= scale;
 
         initializeBuffers();
+    }
+
+    public void setColors(int vertex, float[] rgbaColor) {
+        for(int i = 0; i < 4; i++)
+            colors[4*vertex + i] = rgbaColor[i];
+
+        ByteBuffer cbb = ByteBuffer.allocateDirect(colors.length * 4);
+        cbb.order(ByteOrder.nativeOrder());
+        colorBuffer = cbb.asFloatBuffer();
+        colorBuffer.put(colors);
+        colorBuffer.position(0);
     }
 
     private void initializeBuffers() {

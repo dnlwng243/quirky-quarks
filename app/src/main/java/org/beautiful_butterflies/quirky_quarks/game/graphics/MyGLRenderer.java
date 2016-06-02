@@ -67,10 +67,13 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
                 {
                     int objNum = gameObjects.size()-1;
                     while(objNum >= 0) {
-                        positionMatrix(gl, gameObjects.get(objNum));
-                        gameObjects.get(objNum).draw(gl);
+                        GameObject obj = gameObjects.get(objNum);
+                        positionMatrix(gl, obj);
+                        obj.draw(gl);
 
-                        gameObjects.get(objNum).getPosition().offset((float)(Math.random()/200)-0.5f/200, (float)(Math.random()/200)-0.5f/200);
+                        // TODO: temp movement sim.
+                        obj.setRotation(obj.getRotation() + 3);
+                        obj.getPosition().offset((float)Math.cos(obj.getRotation()), (float)Math.sin(obj.getRotation()));
 
                         objNum--;
                     }
@@ -93,6 +96,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     private void positionMatrix(GL10 gl, GameObject obj) {
         gl.glLoadIdentity();
         gl.glTranslatef(obj.getPosition().x, obj.getPosition().y, -2.0f);
+        gl.glRotatef(obj.getRotation(), 0.0f, 0.0f, 1.0f);
     }
 
     public void updateGameObjects(ArrayList<GameObject> gameObjects) {

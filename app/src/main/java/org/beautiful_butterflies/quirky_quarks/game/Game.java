@@ -19,11 +19,12 @@ import org.beautiful_butterflies.quirky_quarks.MainActivity;
 import org.beautiful_butterflies.quirky_quarks.R;
 import org.beautiful_butterflies.quirky_quarks.StandardModel;
 import org.beautiful_butterflies.quirky_quarks.game.graphics.MyGLSurfaceView;
+import org.beautiful_butterflies.quirky_quarks.game.graphics.items.Baryon;
 import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.GameObject;
-import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.Triangle;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -47,11 +48,7 @@ public class Game extends AppCompatActivity {
     MyGLSurfaceView drawView;
 
     HashMap<String, View> views;
-    /* VARIABLES END */
-
-    /* WORKINGSET VARIABLES */
     ArrayList<GameObject> gameObjects;
-    /* WORKINGSET VARIABLES END */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +76,22 @@ public class Game extends AppCompatActivity {
 
         // Initialize game-related instance variables
         gameObjects = new ArrayList<>();
-        loadGameObjects();
+        loadInitialGameObjects();
     }
 
-    private void loadGameObjects() {
-        for(float y = -0.8f; y <= 1.0; y+= 0.1)
-            for(float x = -1.4f; x <= 1.4; x+= 0.1)
-                gameObjects.add(new Triangle(0.02f, x, y));
+    private void loadInitialGameObjects() {
+        /* Debug: graphics preformance test */
+        //for(float y = -0.8f; y <= 1.0; y+= 0.05)
+        //    for(float x = -1.4f; x <= 1.4; x+= 0.05)
+        //        gameObjects.add(new Triangle(0.02f, x, y));
+
+        for(int i = 0; i < 20; i++) {
+            Random r = new Random();
+            float[] pos = {r.nextFloat(), r.nextFloat()-0.4f};
+            float[] vel = {0.0f, 0.0f};
+            int[] quarks = {(int)(6*Math.random()), (int)(6*Math.random()), (int)(6*Math.random())};
+            gameObjects.add(new Baryon(pos, vel, quarks));
+        }
     }
 
     private void defineViews() {
@@ -134,7 +140,7 @@ public class Game extends AppCompatActivity {
         pseudoscalarMesonBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawView.getRenderer().setState("tetra");
+                queueItem(); // TODO-ish
             }
         });
         vectorMesonBtn.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +166,10 @@ public class Game extends AppCompatActivity {
         views.put("meson2", vectorMesonBtn);
         views.put("baryon1", isospinBaryonOctetBtn);
         views.put("baryon2", isospinBaryonDecupletBtn);
+    }
+
+    public void queueItem() {
+        // TODO
     }
 
     private void setViewState(String stateName) {
@@ -240,7 +250,8 @@ public class Game extends AppCompatActivity {
 
         /* Game Logiks */
         for(int turn = 1; turn <= 20; turn++) {
-            //TODO
+            // TODO
+
             drawView.getRenderer().updateGameObjects(gameObjects);
             drawView.requestRender();
         }
