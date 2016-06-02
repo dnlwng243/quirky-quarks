@@ -4,7 +4,10 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 
+import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.GameObject;
 import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.Tetrahedron;
+
+import java.util.ArrayList;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -18,6 +21,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     float tetraDist;
     float tetraRotation;
 
+    ArrayList<GameObject> gameObjects;
+
     public MyGLRenderer(Context context) {
         this.context = context;
 
@@ -26,6 +31,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         tetra = new Tetrahedron();
         tetraDist = -1.5f;
         tetraRotation = 0;
+
+        gameObjects = new ArrayList<>();
     }
 
     @Override
@@ -54,26 +61,42 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl) {
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-        gl.glLoadIdentity();
 
         switch(state) {
             case "blank":
                 {
-                    /* SPACEFILLER */
+                    int objNum = gameObjects.size()-1;
+                    while(objNum >= 0) {
+                        positionMatrix(gl, gameObjects.get(objNum));
+                        gameObjects.get(objNum).draw(gl);
+
+                        gameObjects.get(objNum).getPosition().offset((float)(Math.random()/200)-0.5f/200, (float)(Math.random()/200)-0.5f/200);
+
+                        objNum--;
+                    }
                     break;
                 }
             case "tetra":
                 {
+                    gl.glLoadIdentity();
                     gl.glTranslatef(0.0f, -0.33f, tetraDist);
                     gl.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
                     gl.glRotatef(tetraRotation, 0.0f, 0.0f, 1.0f);
-
                     tetra.draw(gl);
+
+                    tetraRotation = (tetraRotation - 2.0f) % 360f;
                 }
                 break;
         }
+    }
 
-        // tetraRotation = (tetraRotation - 2.0f) % 360f;
+    private void positionMatrix(GL10 gl, GameObject obj) {
+        gl.glLoadIdentity();
+        gl.glTranslatef(obj.getPosition().x, obj.getPosition().y, -2.0f);
+    }
+
+    public void updateGameObjects(ArrayList<GameObject> gameObjects) {
+        this.gameObjects = gameObjects;
     }
 
     public String getState() {
@@ -83,5 +106,4 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     public void setState(String stateName) {
         this.state = stateName;
     }
-
 }

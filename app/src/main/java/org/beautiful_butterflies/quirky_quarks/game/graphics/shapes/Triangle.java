@@ -1,12 +1,14 @@
 package org.beautiful_butterflies.quirky_quarks.game.graphics.shapes;
 
+import android.graphics.PointF;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class Triangle {
+public class Triangle extends GameObject {
     private FloatBuffer vertexBuffer;
     private FloatBuffer colorBuffer;
     private ByteBuffer indexBuffer;
@@ -20,12 +22,26 @@ public class Triangle {
     private byte[] indices = { 0, 1, 2 };
 
     private float[] colors = {
-            1.0f, 0.0f, 0.0f, 1.0f, // 0. Red
-            0.0f, 1.0f, 0.0f, 1.0f, // 1. Green
+            0.0f, 0.0f, 0.0f, 1.0f, // 0. Black
+            1.0f, 1.0f, 1.0f, 1.0f, // 1. White
             0.0f, 0.0f, 1.0f, 1.0f  // 2. Blue
     };
 
     public Triangle() {
+        position = new PointF(0, 0);
+        initializeBuffers();
+    }
+
+    public Triangle(float scale, float x, float y) {
+        position = new PointF(x, y);
+
+        for(int i = 0; i < vertices.length; i++)
+            vertices[i] *= scale;
+
+        initializeBuffers();
+    }
+
+    private void initializeBuffers() {
         ByteBuffer vbb = ByteBuffer.allocateDirect(vertices.length * 4);
         vbb.order(ByteOrder.nativeOrder());
         vertexBuffer = vbb.asFloatBuffer();
@@ -54,4 +70,5 @@ public class Triangle {
         gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
         gl.glDisableClientState(GL10.GL_COLOR_ARRAY);
     }
+
 }

@@ -46,14 +46,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/pauseButton"
-        android:src="@android:drawable/ic_media_pause"
+        android:src="@android:drawable/ic_menu_compass"
         android:visibility="visible"
         android:layout_marginStart="55dp"
         android:contentDescription="@string/pause_button"
-        android:layout_above="@+id/pseudoscalarMesonButton"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentEnd="false"
-        android:layout_alignStart="@id/background" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -103,9 +101,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/recipeButton"
         android:layout_marginEnd="55dp"
-        android:src="@android:drawable/ic_menu_compass"
+        android:src="@android:drawable/ic_menu_always_landscape_portrait"
         android:contentDescription="@string/button_to_standard_model_selection_overlay"
-        android:layout_above="@+id/isospinBaryonDecupletButton"
-        android:layout_alignEnd="@+id/background" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

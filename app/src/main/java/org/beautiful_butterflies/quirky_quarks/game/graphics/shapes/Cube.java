@@ -1,12 +1,14 @@
 package org.beautiful_butterflies.quirky_quarks.game.graphics.shapes;
 
+import android.graphics.PointF;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class Cube {
+public class Cube extends GameObject {
     private FloatBuffer vertexBuffer;
     private int numFaces = 6;
 

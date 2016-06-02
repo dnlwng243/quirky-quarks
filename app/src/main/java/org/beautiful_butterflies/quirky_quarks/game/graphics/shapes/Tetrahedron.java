@@ -6,7 +6,7 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class Tetrahedron {
+public class Tetrahedron extends GameObject {
 
     private FloatBuffer vertexBuffer;
     private  FloatBuffer colorBuffer;

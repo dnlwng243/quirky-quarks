@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -20,7 +19,10 @@ import org.beautiful_butterflies.quirky_quarks.MainActivity;
 import org.beautiful_butterflies.quirky_quarks.R;
 import org.beautiful_butterflies.quirky_quarks.StandardModel;
 import org.beautiful_butterflies.quirky_quarks.game.graphics.MyGLSurfaceView;
+import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.GameObject;
+import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.Triangle;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,6 +49,10 @@ public class Game extends AppCompatActivity {
     HashMap<String, View> views;
     /* VARIABLES END */
 
+    /* WORKINGSET VARIABLES */
+    ArrayList<GameObject> gameObjects;
+    /* WORKINGSET VARIABLES END */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +75,17 @@ public class Game extends AppCompatActivity {
 
         // Assume stage 5 metastatic cancer
         setViewState("load");
-        countdownToGame(5);
+        countdownToGame(1);
+
+        // Initialize game-related instance variables
+        gameObjects = new ArrayList<>();
+        loadGameObjects();
+    }
+
+    private void loadGameObjects() {
+        for(float y = -0.8f; y <= 1.0; y+= 0.1)
+            for(float x = -1.4f; x <= 1.4; x+= 0.1)
+                gameObjects.add(new Triangle(0.02f, x, y));
     }
 
     private void defineViews() {
@@ -82,10 +98,9 @@ public class Game extends AppCompatActivity {
         views.put("clock", clock);
 
         clockTopLayout = (RelativeLayout.LayoutParams) clock.getLayoutParams();
-        clockCenterLayout = clockTopLayout;
-        Display display = getWindowManager().getDefaultDisplay();
+        clockCenterLayout = new RelativeLayout.LayoutParams(clockTopLayout);
         Point size = new Point();
-        display.getSize(size);
+        getWindowManager().getDefaultDisplay().getSize(size);
         clockCenterLayout.height -= size.y/2;
     }
 
@@ -155,6 +170,7 @@ public class Game extends AppCompatActivity {
                         "clock",
                         "pause"
                 });
+                // TODO: Not working
                 clock.setLayoutParams(clockCenterLayout);
                 break;
             case "game":
@@ -223,17 +239,20 @@ public class Game extends AppCompatActivity {
         clock.setTextSize(20f);
 
         /* Game Logiks */
-        // TODO
+        for(int turn = 1; turn <= 20; turn++) {
+            //TODO
+            drawView.getRenderer().updateGameObjects(gameObjects);
+            drawView.requestRender();
+        }
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(!drawView.getRenderer().getState().equals("blank")) {
-            if (keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            if(!drawView.getRenderer().getState().equals("blank"))
                 drawView.getRenderer().setState("blank");
-            }
+            else super.onKeyDown(keyCode, event);
         }
-        else super.onKeyDown(keyCode, event);
         return true;
     }
 }

@@ -6,7 +6,7 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class Pyramid {
+public class Pyramid extends GameObject {
     private FloatBuffer vertexBuffer;
     private FloatBuffer colorBuffer;
     private ByteBuffer indexBuffer;
