@@ -15,6 +15,7 @@ public class MyGLSurfaceView extends GLSurfaceView {
         this.setRenderer(renderer);
 
         this.requestFocus();
+        this.setFocusable(true);
         this.setFocusableInTouchMode(true);
     }
 
@@ -32,13 +33,13 @@ public class MyGLSurfaceView extends GLSurfaceView {
                 final float dx = x - mLastTouchX;
                 final float dy = y - mLastTouchY;
 
-                renderer.objRotation = (renderer.objRotation + dx/8) % 360f;
+                renderer.tetraRotation = (renderer.tetraRotation + dx/8) % 360f;
 
-                renderer.posZ += dy/1000;
-                if(renderer.posZ > -1.4f)
-                    renderer.posZ = -1.4f;
-                else if(renderer.posZ < -2.0f)
-                    renderer.posZ = -2.0f;
+                renderer.tetraDist += dy/1000;
+                if(renderer.tetraDist > -1.4f)
+                    renderer.tetraDist = -1.4f;
+                else if(renderer.tetraDist < -2.0f)
+                    renderer.tetraDist = -2.0f;
 
                 requestRender();
                 break;
@@ -49,5 +50,9 @@ public class MyGLSurfaceView extends GLSurfaceView {
         mLastTouchY = y;
 
         return true;
+    }
+
+    public MyGLRenderer getRenderer() {
+        return renderer;
     }
 }

@@ -12,16 +12,20 @@ import javax.microedition.khronos.opengles.GL10;
 public class MyGLRenderer implements GLSurfaceView.Renderer {
     Context context;
 
-    private Tetrahedron pyramid;
-    float posZ;
-    float objRotation;
+    String state;
+
+    private Tetrahedron tetra;
+    float tetraDist;
+    float tetraRotation;
 
     public MyGLRenderer(Context context) {
         this.context = context;
 
-        pyramid = new Tetrahedron();
-        posZ = -1.5f;
-        objRotation = 0;
+        setState("blank");
+
+        tetra = new Tetrahedron();
+        tetraDist = -1.5f;
+        tetraRotation = 0;
     }
 
     @Override
@@ -52,13 +56,32 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
 
-        gl.glTranslatef(0.0f, -0.33f, posZ);
-        gl.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
-        gl.glRotatef(objRotation, 0.0f, 0.0f, 1.0f);
+        switch(state) {
+            case "blank":
+                {
+                    /* SPACEFILLER */
+                    break;
+                }
+            case "tetra":
+                {
+                    gl.glTranslatef(0.0f, -0.33f, tetraDist);
+                    gl.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
+                    gl.glRotatef(tetraRotation, 0.0f, 0.0f, 1.0f);
 
-        pyramid.draw(gl);
+                    tetra.draw(gl);
+                }
+                break;
+        }
 
-        // objRotation = (objRotation - 2.0f) % 360f;
+        // tetraRotation = (tetraRotation - 2.0f) % 360f;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String stateName) {
+        this.state = stateName;
     }
 
 }

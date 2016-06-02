@@ -1,12 +1,13 @@
 package org.beautiful_butterflies.quirky_quarks.game;
 
+import android.content.Intent;
 import android.graphics.Point;
-import android.opengl.GLSurfaceView;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,7 +16,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.beautiful_butterflies.quirky_quarks.MainActivity;
 import org.beautiful_butterflies.quirky_quarks.R;
+import org.beautiful_butterflies.quirky_quarks.StandardModel;
 import org.beautiful_butterflies.quirky_quarks.game.graphics.MyGLSurfaceView;
 
 import java.util.HashMap;
@@ -39,7 +42,7 @@ public class Game extends AppCompatActivity {
     ImageButton pseudoscalarMesonBtn, vectorMesonBtn;
     ImageButton isospinBaryonOctetBtn, isospinBaryonDecupletBtn;
 
-    GLSurfaceView drawView;
+    MyGLSurfaceView drawView;
 
     HashMap<String, View> views;
     /* VARIABLES END */
@@ -93,13 +96,13 @@ public class Game extends AppCompatActivity {
         pauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to pause menu TODO
+                startActivity(new Intent(Game.this, MainActivity.class));
             }
         });
         recipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to standard model TODO
+                startActivity(new Intent(Game.this, StandardModel.class));
             }
         });
 
@@ -116,25 +119,25 @@ public class Game extends AppCompatActivity {
         pseudoscalarMesonBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to meson1 chooser TODO
+                drawView.getRenderer().setState("tetra");
             }
         });
         vectorMesonBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to meson2 chooser TODO
+                drawView.getRenderer().setState("tetra");
             }
         });
         isospinBaryonOctetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to baryon1 chooser TODO
+                drawView.getRenderer().setState("tetra");
             }
         });
         isospinBaryonDecupletBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Go to baryon2 chooser TODO
+                drawView.getRenderer().setState("tetra");
             }
         });
 
@@ -221,5 +224,16 @@ public class Game extends AppCompatActivity {
 
         /* Game Logiks */
         // TODO
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(!drawView.getRenderer().getState().equals("blank")) {
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                drawView.getRenderer().setState("blank");
+            }
+        }
+        else super.onKeyDown(keyCode, event);
+        return true;
     }
 }
