@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button playButton;
     Button standardModelButton;
+    Button aboutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         playButton = (Button) findViewById(R.id.playButton);
         standardModelButton = (Button) findViewById(R.id.standardModelButton);
+        aboutButton = (Button) findViewById(R.id.aboutButton);
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, StandardModel.class));
+            }
+        });
+
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, About.class));
             }
         });
     }

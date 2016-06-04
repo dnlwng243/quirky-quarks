@@ -11,22 +11,31 @@
     tools:context="org.beautiful_butterflies.quirky_quarks.MainActivity">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Play Game"
         android:id="@+id/playButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="151dp" />
+        android:layout_marginBottom="200dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Standard Model"
         android:id="@+id/standardModelButton"
         android:layout_alignTop="@+id/playButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp" />
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:id="@+id/aboutButton"
+        android:layout_alignTop="@+id/standardModelButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:layout_width="wrap_content"
