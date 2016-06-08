@@ -2,20 +2,16 @@ package org.beautiful_butterflies.quirky_quarks;
 
 import android.app.Activity;
 
-import android.media.Image;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
         import android.view.MotionEvent;
         import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+import org.beautiful_butterflies.quirky_quarks.about.RecipeHelp;
 
 public class Sandbox extends Activity {
     int bar = 0;
@@ -27,12 +23,6 @@ public class Sandbox extends Activity {
     private LayoutParams layoutParams;
     ImageView proton;
     ImageView neutron;
-    TextView caption;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +37,7 @@ public class Sandbox extends Activity {
         final ImageView downQuark2 = (ImageView) findViewById(R.id.downQuark2);
         final ImageView electron = (ImageView) findViewById(R.id.electron);
         final TextView caption = (TextView) findViewById(R.id.caption);
+        final Button recipeHelpButton = (Button) findViewById(R.id.recipeHelpButton);
         upQuark1.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -306,48 +297,14 @@ public class Sandbox extends Activity {
             }
         });
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        recipeHelpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Sandbox.this, RecipeHelp.class));
+            }
+        });
+
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Sandbox Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://org.beautiful_butterflies.quirky_quarks/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Sandbox Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://org.beautiful_butterflies.quirky_quarks/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
 }
