@@ -1,58 +1,61 @@
-
 package org.beautiful_butterflies.quirky_quarks;
+
 import android.app.Activity;
-import android.os.Bundle;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
-public class Sandbox extends Activity implements View.OnTouchListener {
+        import android.os.Bundle;
+        import android.view.MotionEvent;
+        import android.view.View;
+        import android.widget.ImageView;
+        import android.widget.LinearLayout.LayoutParams;
 
-    private ImageView mImageView;
-    private ViewGroup mRrootLayout;
-    private int _xDelta;
-    private int _yDelta;
+
+
+public class Sandbox extends Activity {
+
+    int windowwidth;
+    int windowheight;
+
+    private LayoutParams layoutParams;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mRrootLayout = (ViewGroup) findViewById(R.id.root);
-        mImageView = (ImageView) mRrootLayout.findViewById(R.id.bottomQuarkImage);
+        setContentView(R.layout.activity_sandbox);
 
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
-        mImageView.setLayoutParams(layoutParams);
-        mImageView.setOnTouchListener(this);
-    }
+        windowwidth = getWindowManager().getDefaultDisplay().getWidth();
+        windowheight = getWindowManager().getDefaultDisplay().getHeight();
+        final ImageView img = (ImageView) findViewById(R.id.imageView1);
 
-    public boolean onTouch(View view, MotionEvent event) {
-        final int X = (int) event.getRawX();
-        final int Y = (int) event.getRawY();
-        switch (event.getAction() & MotionEvent.ACTION_MASK) {
-            case MotionEvent.ACTION_DOWN:
-                RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
-                _xDelta = X - lParams.leftMargin;
-                _yDelta = Y - lParams.topMargin;
-                break;
-            case MotionEvent.ACTION_UP:
-                break;
-            case MotionEvent.ACTION_POINTER_DOWN:
-                break;
-            case MotionEvent.ACTION_POINTER_UP:
-                break;
-            case MotionEvent.ACTION_MOVE:
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
+        img.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                LayoutParams layoutParams = (LayoutParams) img
                         .getLayoutParams();
-                layoutParams.leftMargin = X - _xDelta;
-                layoutParams.topMargin = Y - _yDelta;
-                layoutParams.rightMargin = -250;
-                layoutParams.bottomMargin = -250;
-                view.setLayoutParams(layoutParams);
-                break;
-        }
-        mRrootLayout.invalidate();
-        return true;
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        int x_cord = (int) event.getRawX();
+                        int y_cord = (int) event.getRawY();
+
+                        if (x_cord > windowwidth) {
+                            x_cord = windowwidth;
+                        }
+                        if (y_cord > windowheight) {
+                            y_cord = windowheight;
+                        }
+
+                        layoutParams.leftMargin = x_cord - 25;
+                        layoutParams.topMargin = y_cord - 75;
+
+                        img.setLayoutParams(layoutParams);
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 }
