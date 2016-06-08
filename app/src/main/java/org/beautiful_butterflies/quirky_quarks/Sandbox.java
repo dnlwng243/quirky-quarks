@@ -1,196 +1,58 @@
 
 package org.beautiful_butterflies.quirky_quarks;
-
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Interpolator;
-import android.view.animation.OvershootInterpolator;
-import android.widget.FrameLayout;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class Sandbox extends Activity {
-    private static final String DEBUG_TAG = "GestureFunActivity";
+public class Sandbox extends Activity implements View.OnTouchListener {
 
-    /** Called when the activity is first created. */
+    private ImageView mImageView;
+    private ViewGroup mRrootLayout;
+    private int _xDelta;
+    private int _yDelta;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sandbox);
+        setContentView(R.layout.activity_main);
+        mRrootLayout = (ViewGroup) findViewById(R.id.root);
+        mImageView = (ImageView) mRrootLayout.findViewById(R.id.bottomQuarkImage);
 
-        FrameLayout frame = (FrameLayout) findViewById(R.id.graphics_holder);
-        PlayAreaView image = new PlayAreaView(this);
-        frame.addView(image);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
+        mImageView.setLayoutParams(layoutParams);
+        mImageView.setOnTouchListener(this);
     }
 
-    private class PlayAreaView extends View {
-
-        private GestureDetector gestures;
-        private Matrix translate;
-        private Bitmap bottom_quark;
-
-        private Matrix animateStart;
-        private Interpolator animateInterpolator;
-        private long startTime;
-        private long endTime;
-        private float totalAnimDx;
-        private float totalAnimDy;
-
-        public void onAnimateMove(float dx, float dy, long duration) {
-            animateStart = new Matrix(translate);
-            animateInterpolator = new OvershootInterpolator();
-            startTime = System.currentTimeMillis();
-            endTime = startTime + duration;
-            totalAnimDx = dx;
-            totalAnimDy = dy;
-            post(new Runnable() {
-                @Override
-                public void run() {
-                    onAnimateStep();
-                }
-            });
+    public boolean onTouch(View view, MotionEvent event) {
+        final int X = (int) event.getRawX();
+        final int Y = (int) event.getRawY();
+        switch (event.getAction() & MotionEvent.ACTION_MASK) {
+            case MotionEvent.ACTION_DOWN:
+                RelativeLayout.LayoutParams lParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+                _xDelta = X - lParams.leftMargin;
+                _yDelta = Y - lParams.topMargin;
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+            case MotionEvent.ACTION_POINTER_DOWN:
+                break;
+            case MotionEvent.ACTION_POINTER_UP:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
+                        .getLayoutParams();
+                layoutParams.leftMargin = X - _xDelta;
+                layoutParams.topMargin = Y - _yDelta;
+                layoutParams.rightMargin = -250;
+                layoutParams.bottomMargin = -250;
+                view.setLayoutParams(layoutParams);
+                break;
         }
-
-        private void onAnimateStep() {
-            long curTime = System.currentTimeMillis();
-            float percentTime = (float) (curTime - startTime)
-                    / (float) (endTime - startTime);
-            float percentDistance = animateInterpolator
-                    .getInterpolation(percentTime);
-            float curDx = percentDistance * totalAnimDx;
-            float curDy = percentDistance * totalAnimDy;
-            translate.set(animateStart);
-            onMove(curDx, curDy);
-
-            //Log.v(DEBUG_TAG, "We're " + percentDistance + " of the way there!");
-            if (percentTime < 1.0f) {
-                post(new Runnable() {
-                    @Override
-                    public void run() {
-                        onAnimateStep();
-                    }
-                });
-            }
-        }
-
-        public void onMove(float dx, float dy) {
-            translate.postTranslate(dx, dy);
-            invalidate();
-        }
-
-        public void onResetLocation() {
-            translate.reset();
-            invalidate();
-        }
-
-        public void onSetLocation(float dx, float dy) {
-            translate.postTranslate(dx, dy);
-        }
-
-        public PlayAreaView(Context context) {
-            super(context);
-            translate = new Matrix();
-            gestures = new GestureDetector(Sandbox.this,
-                    new GestureListener(this));
-            bottom_quark = BitmapFactory.decodeResource(getResources(),
-                    R.drawable.bottom_quark);
-        }
-
-        @Override
-        protected void onDraw(Canvas canvas) {
-            // Log.v(DEBUG_TAG, "onDraw");
-            canvas.drawBitmap(bottom_quark, translate, null);
-            Matrix m = canvas.getMatrix();
-            //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
-            //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
-        }
-
-        @Override
-        public boolean onTouchEvent(MotionEvent event) {
-            return gestures.onTouchEvent(event);
-        }
-
+        mRrootLayout.invalidate();
+        return true;
     }
-
-    private class GestureListener implements GestureDetector.OnGestureListener,
-            GestureDetector.OnDoubleTapListener {
-
-        PlayAreaView view;
-
-        public GestureListener(PlayAreaView view) {
-            this.view = view;
-        }
-
-        @Override
-        public boolean onDown(MotionEvent e) {
-            Log.v(DEBUG_TAG, "onDown");
-            return true;
-        }
-
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2,
-                               final float velocityX, final float velocityY) {
-            //Log.v(DEBUG_TAG, "onFling");
-            final float distanceTimeFactor = 0.4f;
-            final float totalDx = (distanceTimeFactor * velocityX / 2);
-            final float totalDy = (distanceTimeFactor * velocityY / 2);
-
-            view.onAnimateMove(totalDx, totalDy,
-                    (long) (1000 * distanceTimeFactor));
-            return true;
-        }
-
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-            Log.v(DEBUG_TAG, "onDoubleTap");
-            view.onResetLocation();
-            return true;
-        }
-
-        @Override
-        public void onLongPress(MotionEvent e) {
-            Log.v(DEBUG_TAG, "onLongPress");
-        }
-
-        @Override
-        public boolean onScroll(MotionEvent e1, MotionEvent e2,
-                                float distanceX, float distanceY) {
-            //Log.v(DEBUG_TAG, "onScroll");
-
-            view.onMove(-distanceX, -distanceY);
-            return true;
-        }
-
-        @Override
-        public void onShowPress(MotionEvent e) {
-            Log.v(DEBUG_TAG, "onShowPress");
-        }
-
-        @Override
-        public boolean onSingleTapUp(MotionEvent e) {
-            Log.v(DEBUG_TAG, "onSingleTapUp");
-            return false;
-        }
-
-        @Override
-        public boolean onDoubleTapEvent(MotionEvent e) {
-            Log.v(DEBUG_TAG, "onDoubleTapEvent");
-            return false;
-        }
-
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            Log.v(DEBUG_TAG, "onSingleTapConfirmed");
-            return false;
-        }
-
-    }
-
 }
