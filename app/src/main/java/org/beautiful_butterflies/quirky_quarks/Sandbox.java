@@ -3,6 +3,7 @@ package org.beautiful_butterflies.quirky_quarks;
 import android.app.Activity;
 
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
         import android.view.MotionEvent;
         import android.view.View;
@@ -10,9 +11,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 public class Sandbox extends Activity {
-
+    int bar = 0;
+    int type = 0;
     int windowwidth;
     int windowheight;
     Button resetButton;
@@ -20,6 +27,12 @@ public class Sandbox extends Activity {
     private LayoutParams layoutParams;
     ImageView proton;
     ImageView neutron;
+    TextView caption;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,7 +46,7 @@ public class Sandbox extends Activity {
         final ImageView downQuark1 = (ImageView) findViewById(R.id.downQuark1);
         final ImageView downQuark2 = (ImageView) findViewById(R.id.downQuark2);
         final ImageView electron = (ImageView) findViewById(R.id.electron);
-
+        final TextView caption = (TextView) findViewById(R.id.caption);
         upQuark1.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -206,11 +219,12 @@ public class Sandbox extends Activity {
         proton = (ImageView) findViewById(R.id.proton);
         neutron = (ImageView) findViewById(R.id.neutron);
 
+
         combineButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
-                proton.setVisibility(View.GONE);
-                neutron.setVisibility(View.GONE);
+
                 int upQuark1X = (int) upQuark1.getX();
                 int upQuark1Y = (int) upQuark1.getY();
                 int upQuark2X = (int) upQuark2.getX();
@@ -221,46 +235,66 @@ public class Sandbox extends Activity {
                 int downQuark2Y = (int) downQuark2.getY();
                 int electronX = (int) electron.getX();
                 int electronY = (int) electron.getY();
+
+                if (type== 1 && bar == 1 && electronY > 480 && electronY < 925 && electronX < 648 && electronX > 216) {
+                    proton.setVisibility(View.GONE);
+                    neutron.setVisibility(View.VISIBLE);
+                    electron.setVisibility(View.GONE);
+                    caption.setVisibility(View.GONE);
+                }
                 if (upQuark1X > 216 && upQuark1X < 648 && upQuark1Y > 480 && upQuark1Y < 925 &&
                         upQuark2X > 216 && upQuark2X < 648 && upQuark2Y > 480 && upQuark2Y < 925
                         && downQuark1X > 216 && downQuark1X < 648 && downQuark1Y > 480 &&
-                        downQuark1Y < 925) {
+                        downQuark1Y < 925 && bar == 0) {
                     proton.setVisibility(View.VISIBLE);
                     upQuark1.setVisibility(View.GONE);
                     upQuark2.setVisibility(View.GONE);
                     downQuark1.setVisibility(View.GONE);
+                    bar = 1;
+                    type = 1;
+                    caption.setVisibility(View.GONE);
                 }
                 if (upQuark1X > 216 && upQuark1X < 648 && upQuark1Y > 480 && upQuark1Y < 925 &&
                         upQuark2X > 216 && upQuark2X < 648 && upQuark2Y > 480 && upQuark2Y < 925
                         && downQuark2X > 216 && downQuark2X < 648 && downQuark2Y > 480 &&
-                        downQuark2Y < 925) {
+                        downQuark2Y < 925 && bar == 0) {
                     proton.setVisibility(View.VISIBLE);
                     upQuark1.setVisibility(View.GONE);
                     upQuark2.setVisibility(View.GONE);
                     downQuark2.setVisibility(View.GONE);
+                    caption.setVisibility(View.GONE);
+                    bar = 1;
+                    type = 1;
                 }
                 if (downQuark1X > 216 && downQuark1X < 648 && downQuark1Y > 480 && downQuark1Y <
                         925 &&
                         downQuark2X > 216 && downQuark2X < 648 && downQuark2Y > 480 && downQuark2Y <
                         925
                         && upQuark1X > 216 && upQuark1X < 648 && upQuark1Y > 480 &&
-                        upQuark1Y < 925) {
+                        upQuark1Y < 925 && bar == 0) {
                     neutron.setVisibility(View.VISIBLE);
                     downQuark1.setVisibility(View.GONE);
                     downQuark2.setVisibility(View.GONE);
                     upQuark1.setVisibility(View.GONE);
+                    caption.setVisibility(View.GONE);
+                    bar = 1;
                 }
                 if (downQuark1X > 216 && downQuark1X < 648 && downQuark1Y > 480 && downQuark1Y <
                         925 &&
                         downQuark2X > 216 && downQuark2X < 648 && downQuark2Y > 480 && downQuark2Y <
                         925
                         && upQuark2X > 216 && upQuark2X < 648 && upQuark2Y > 480 &&
-                        upQuark2Y < 925) {
+                        upQuark2Y < 925 && bar == 0) {
                     neutron.setVisibility(View.VISIBLE);
                     downQuark1.setVisibility(View.GONE);
                     downQuark2.setVisibility(View.GONE);
                     upQuark2.setVisibility(View.GONE);
+                    caption.setVisibility(View.GONE);
+                    bar = 1;
                 }
+
+                else caption.setText("Refer to the Recipes!");
+
             }
         });
 
@@ -272,5 +306,48 @@ public class Sandbox extends Activity {
             }
         });
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Sandbox Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://org.beautiful_butterflies.quirky_quarks/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Sandbox Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://org.beautiful_butterflies.quirky_quarks/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
     }
 }
