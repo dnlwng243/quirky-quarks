@@ -2,23 +2,23 @@ package org.beautiful_butterflies.quirky_quarks;
 
 import android.app.Activity;
 
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Intent;
 import android.os.Bundle;
         import android.view.MotionEvent;
         import android.view.View;
-        import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 
-        import android.graphics.Bitmap;
-        import android.graphics.Canvas;
-        import android.graphics.Color;
-        import android.graphics.Paint;
+import org.beautiful_butterflies.quirky_quarks.particle_descriptions.TauNeutrino;
 
 public class Sandbox extends Activity {
 
     int windowwidth;
     int windowheight;
+    Button resetButton;
+    ViewGroup sandboxView;
 
     private LayoutParams layoutParams;
 
@@ -26,15 +26,6 @@ public class Sandbox extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandbox);
-
-        Paint paint = new Paint();
-        paint.setColor(Color.parseColor("#FFFFFF"));
-        Bitmap bg = Bitmap.createBitmap(600,600,Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bg);
-        canvas.drawRect(100,200,400,400,paint);
-        RelativeLayout ll = (RelativeLayout) findViewById(R.id.draw_area);
-        ll.setBackgroundDrawable(new BitmapDrawable(bg));
-
 
         windowwidth = getWindowManager().getDefaultDisplay().getWidth();
         windowheight = getWindowManager().getDefaultDisplay().getHeight();
@@ -47,12 +38,14 @@ public class Sandbox extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 LayoutParams layoutParams = (LayoutParams) img
                         .getLayoutParams();
+                int x_cord;
+                int y_cord;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        int x_cord = (int) event.getRawX();
-                        int y_cord = (int) event.getRawY();
+                        x_cord = (int) event.getRawX();
+                        y_cord = (int) event.getRawY();
 
                         if (x_cord > windowwidth) {
                             x_cord = windowwidth;
@@ -61,8 +54,8 @@ public class Sandbox extends Activity {
                             y_cord = windowheight;
                         }
 
-                        layoutParams.leftMargin = x_cord - 25;
-                        layoutParams.topMargin = y_cord - 75;
+                        layoutParams.leftMargin = x_cord;
+                        layoutParams.topMargin = y_cord;
 
                         img.setLayoutParams(layoutParams);
                         break;
@@ -78,12 +71,14 @@ public class Sandbox extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 LayoutParams layoutParams = (LayoutParams) img2
                         .getLayoutParams();
+                int x_cord;
+                int y_cord;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        int x_cord = (int) event.getRawX();
-                        int y_cord = (int) event.getRawY();
+                        x_cord = (int) event.getRawX();
+                        y_cord = (int) event.getRawY();
 
                         if (x_cord > windowwidth) {
                             x_cord = windowwidth;
@@ -92,8 +87,8 @@ public class Sandbox extends Activity {
                             y_cord = windowheight;
                         }
 
-                        layoutParams.leftMargin = x_cord - 25;
-                        layoutParams.topMargin = y_cord - 75;
+                        layoutParams.leftMargin = x_cord;
+                        layoutParams.topMargin = y_cord;
 
                         img2.setLayoutParams(layoutParams);
                         break;
@@ -109,12 +104,14 @@ public class Sandbox extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 LayoutParams layoutParams = (LayoutParams) img3
                         .getLayoutParams();
+                int x_cord;
+                int y_cord;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        int x_cord = (int) event.getRawX();
-                        int y_cord = (int) event.getRawY();
+                        x_cord = (int) event.getRawX();
+                        y_cord = (int) event.getRawY();
 
                         if (x_cord > windowwidth) {
                             x_cord = windowwidth;
@@ -123,8 +120,8 @@ public class Sandbox extends Activity {
                             y_cord = windowheight;
                         }
 
-                        layoutParams.leftMargin = x_cord - 25;
-                        layoutParams.topMargin = y_cord - 75;
+                        layoutParams.leftMargin = x_cord;
+                        layoutParams.topMargin = y_cord;
 
                         img3.setLayoutParams(layoutParams);
                         break;
@@ -134,5 +131,17 @@ public class Sandbox extends Activity {
                 return true;
             }
         });
+
+        resetButton = (Button) findViewById(R.id.resetButton);
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
+
+
     }
 }
