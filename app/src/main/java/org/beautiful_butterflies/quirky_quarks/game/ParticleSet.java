@@ -88,7 +88,7 @@ public class ParticleSet {
         float r = getMagnitude(displacementArray);
 
 //        float fGravityMagnitude = G * (m1 * m2) / ((float)Math.pow(r, 2));
-        float fGravityMagnitude = (r < 30) ? (r) : (0); // TODO: temp strong force spring approx
+        float fGravityMagnitude = (r < 1) ? (r) : (0); // TODO: temp strong force spring approx
         float proportionalityConstant = fGravityMagnitude / r;
 
         return new float[] { proportionalityConstant * displacementArray[0],
