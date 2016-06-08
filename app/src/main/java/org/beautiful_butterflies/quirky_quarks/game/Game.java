@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -50,6 +51,8 @@ public class Game extends AppCompatActivity {
     HashMap<String, View> views;
     ArrayList<GameObject> gameObjects;
 
+    ParticleSet particleSet;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +75,7 @@ public class Game extends AppCompatActivity {
 
         // Assume stage 5 metastatic cancer
         setViewState("load");
-        countdownToGame(1);
+        countdownToGame(3);
 
         // Initialize game-related instance variables
         gameObjects = new ArrayList<>();
@@ -85,13 +88,39 @@ public class Game extends AppCompatActivity {
         //    for(float x = -1.4f; x <= 1.4; x+= 0.05)
         //        gameObjects.add(new Triangle(0.02f, x, y));
 
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 30; i++) {
             Random r = new Random();
-            float[] pos = {r.nextFloat()-0.6f, r.nextFloat()-0.4f};
-            float[] vel = {0.0f, 0.0f};
+            float[] pos = {r.nextFloat()-0.5f, r.nextFloat()-0.4f};
+//            float[] vel = {0.00f, 0.00f};
+            float[] vel = getSpinVel(pos);
             int[] quarks = {(int)(6*Math.random()), (int)(6*Math.random()), (int)(6*Math.random())};
             gameObjects.add(new Baryon(pos, vel, quarks));
         }
+    }
+
+    private float[] getSpinVel(float[] pos) {
+        float[] returnArray = {0.03f, 0.03f};
+        if(pos[0] > 0) {
+            if (pos[1] > 0) {
+                returnArray[0] *= 0;
+                returnArray[1] *= -1;
+            }
+            else {
+                returnArray[0] *= -1;
+                returnArray[1] *= 0;
+            }
+        } else {
+            if (pos[1] > 0) {
+                returnArray[0] *= 1;
+                returnArray[1] *= 0;
+            }
+            else {
+                returnArray[0] *= 0;
+                returnArray[1] *= 1;
+            }
+        }
+
+        return returnArray;
     }
 
     private void defineViews() {
@@ -140,7 +169,8 @@ public class Game extends AppCompatActivity {
         pseudoscalarMesonBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                queueItem(); // TODO-ish
+                drawView.getRenderer().setState("tetra");
+//                queueItem(); // TODO-ish
             }
         });
         vectorMesonBtn.setOnClickListener(new View.OnClickListener() {

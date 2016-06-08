@@ -28,14 +28,14 @@ public class Triangle extends GameObject {
     };
 
     public Triangle() {
-        position = new PointF(0, 0);
-        rotation = 0;
+        position = new float[]{0.0f, 0.0f};
+        rotation = 0.0f;
         initializeBuffers();
     }
 
     public Triangle(float scale, float x, float y) {
-        position = new PointF(x, y);
-        rotation = 0;
+        position = new float[]{x, y};
+        rotation = 0.0f;
 
         for(int i = 0; i < vertices.length; i++)
             vertices[i] *= scale;

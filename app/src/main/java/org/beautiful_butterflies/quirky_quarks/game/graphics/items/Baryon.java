@@ -2,6 +2,10 @@ package org.beautiful_butterflies.quirky_quarks.game.graphics.items;
 
 import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.Triangle;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
 public class Baryon extends Triangle {
 
     static final float massSizeRatio = 0.05f; // TODO temp unused
@@ -20,6 +24,8 @@ public class Baryon extends Triangle {
     int[] quarks;
     float spin, charge, mass;
 
+    long randID;
+
     public Baryon(float[] pos, float[] vel, int[] quarks) {
         super(0.04f, pos[0], pos[1]);
 
@@ -30,10 +36,71 @@ public class Baryon extends Triangle {
             setColors(i, quarkColors[quarks[i]]);
 
         loadProperties(quarks);
+
+        randID = (new Random()).nextLong();
     }
 
     private void loadProperties(int[] quarks) {
-        // TODO: Create database class
+        int[][] baryonArray = {
+                {0, 0, 0},
+                {1, 0, 0},
+                {1, 1, 0},
+                {1, 1, 1}
+        };
+        float[] massArray = {
+                1232,
+                938,
+                940,
+                1232
+        };
+
+        boolean found = false;
+        int currIndex = 0;
+
+        while(!found && currIndex < baryonArray.length) {
+            if(isReorderedArray(quarks, baryonArray[currIndex])) {
+                if(currIndex == 0 || currIndex == 3)
+                    spin = 3f/2f;
+                else spin = 1f/2f;
+                mass = massArray[currIndex] * 1.78266191e-30f;
+                charge = findCharge(quarks);
+
+                found = true;
+            }
+            else currIndex++;
+        }
+
+        if(!found) {
+            // default to neutron
+            spin = 1f/2f;
+            mass = 940;
+            charge = 0;
+        }
+    }
+
+    private float findCharge(int[] quarkArray) {
+        float[] quarkCharges = {+2, -1, +2, -1, +2, -1};
+
+        float totalCharge = 0.0f;
+        for(int quarkID : quarkArray)
+            totalCharge += quarkCharges[quarkID];
+
+        return totalCharge/3;
+    }
+
+    private boolean isReorderedArray(int[] orig, int[] target) {
+        ArrayList<Integer> origList = new ArrayList<>();
+        ArrayList<Integer> targetList = new ArrayList<>();
+
+        for(int i = 0; i < 3; i++) {
+            origList.add(orig[i]);
+            targetList.add(target[i]);
+        }
+
+        Collections.sort(origList);
+        Collections.sort(targetList);
+
+        return origList.equals(targetList);
     }
 
     public float[] getVelocity() {
@@ -52,5 +119,17 @@ public class Baryon extends Triangle {
     public void setQuarks(int[] quarks) {
         this.quarks = new int[quarks.length];
         System.arraycopy(quarks, 0, this.quarks, 0, quarks.length);
+    }
+
+    public float getSpin() {
+        return spin;
+    }
+
+    public float getCharge() {
+        return charge;
+    }
+
+    public float getMass() {
+        return mass;
     }
 }

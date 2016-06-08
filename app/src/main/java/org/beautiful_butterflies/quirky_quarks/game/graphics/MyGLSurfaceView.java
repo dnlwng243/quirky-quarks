@@ -41,6 +41,9 @@ public class MyGLSurfaceView extends GLSurfaceView {
                 else if(renderer.tetraDist < -2.0f)
                     renderer.tetraDist = -2.0f;
 
+                renderer.x += dx/1000;
+                renderer.y -= dy/1000;
+
                 requestRender();
                 break;
             }

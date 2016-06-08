@@ -4,6 +4,8 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.opengl.GLU;
 
+import org.beautiful_butterflies.quirky_quarks.game.ParticleSet;
+import org.beautiful_butterflies.quirky_quarks.game.graphics.items.Baryon;
 import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.GameObject;
 import org.beautiful_butterflies.quirky_quarks.game.graphics.shapes.Tetrahedron;
 
@@ -21,7 +23,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     float tetraDist;
     float tetraRotation;
 
-    ArrayList<GameObject> gameObjects;
+    float x, y;
+
+    ArrayList<Baryon> gameObjects;
+    ParticleSet particleSet;
 
     public MyGLRenderer(Context context) {
         this.context = context;
@@ -31,6 +36,9 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         tetra = new Tetrahedron();
         tetraDist = -1.5f;
         tetraRotation = 0;
+
+        x = 0.0f;
+        y = 0.0f;
 
         gameObjects = new ArrayList<>();
     }
@@ -59,21 +67,25 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     }
 
     @Override
-    public void onDrawFrame(GL10 gl) {
+    public synchronized void onDrawFrame(GL10 gl) {
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 
         switch(state) {
             case "blank":
                 {
+                    particleSet = new ParticleSet(gameObjects);
+                    particleSet.update();
+                    gameObjects = new ArrayList<>(particleSet.getParticles());
+
                     int objNum = gameObjects.size()-1;
                     while(objNum >= 0) {
-                        GameObject obj = gameObjects.get(objNum);
+                        Baryon obj = gameObjects.get(objNum);
                         positionMatrix(gl, obj);
                         obj.draw(gl);
 
                         // TODO: temp movement sim.
                         obj.setRotation(obj.getRotation() + 3);
-                        obj.getPosition().offset((float)(Math.random()-.5)/100f, (float)(Math.random()-.5)/100f);
+//                        obj.getPosition().offset((float)(Math.random()-.5)/100f, (float)(Math.random()-.5)/100f);
 
                         objNum--;
                     }
@@ -95,11 +107,11 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     private void positionMatrix(GL10 gl, GameObject obj) {
         gl.glLoadIdentity();
-        gl.glTranslatef(obj.getPosition().x, obj.getPosition().y, -2.0f);
+        gl.glTranslatef(obj.getPosition()[0] + x, obj.getPosition()[1] + y, -2.0f);
         gl.glRotatef(obj.getRotation(), 0.0f, 0.0f, 1.0f);
     }
 
-    public void updateGameObjects(ArrayList<GameObject> gameObjects) {
+    public void updateGameObjects(ArrayList gameObjects) {
         this.gameObjects = gameObjects;
     }
 
