@@ -10,29 +10,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/square"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="160dp"/>
+        android:layout_marginLeft="216px"
+        android:layout_marginTop="480px"
+        android:id="@+id/imageView3" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/upQuark1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/up_quark" />
+        android:src="@drawable/up_quark"
+        android:layout_marginLeft="6dp"/>
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/upQuark2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/up_quark"
+        android:layout_marginTop="72dp"
+        android:layout_marginLeft="6dp"/>
+
+    <ImageView
+        android:id="@+id/downQuark1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/down_quark"
-        android:layout_marginLeft="72dp"/>
+        android:layout_marginLeft="280dp"/>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/downQuark2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/down_quark"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="72dp"/>
+
+    <ImageView
+        android:id="@+id/electron"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/electron"
+        android:layout_marginTop="36dp"
         android:layout_marginLeft="144dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Combine!"
+        android:id="@+id/combineButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="110dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -41,6 +68,24 @@
         android:id="@+id/resetButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="83dp" />
+        android:layout_marginBottom="54dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/proton"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="108dp"
+        android:visibility="gone"
+        android:src="@drawable/proton_2x"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/neutron"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="108dp"
+        android:visibility="gone"
+        android:src="@drawable/neutron_2x"/>
 
 </RelativeLayout>
