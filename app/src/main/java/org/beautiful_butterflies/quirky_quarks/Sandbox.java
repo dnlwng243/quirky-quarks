@@ -34,7 +34,7 @@ public class Sandbox extends Activity {
 
         private GestureDetector gestures;
         private Matrix translate;
-        private Bitmap droid;
+        private Bitmap bottom_quark;
 
         private Matrix animateStart;
         private Interpolator animateInterpolator;
@@ -99,14 +99,14 @@ public class Sandbox extends Activity {
             translate = new Matrix();
             gestures = new GestureDetector(Sandbox.this,
                     new GestureListener(this));
-            droid = BitmapFactory.decodeResource(getResources(),
+            bottom_quark = BitmapFactory.decodeResource(getResources(),
                     R.drawable.bottom_quark);
         }
 
         @Override
         protected void onDraw(Canvas canvas) {
             // Log.v(DEBUG_TAG, "onDraw");
-            canvas.drawBitmap(droid, translate, null);
+            canvas.drawBitmap(bottom_quark, translate, null);
             Matrix m = canvas.getMatrix();
             //Log.d(DEBUG_TAG, "Matrix: " + translate.toShortString());
             //Log.d(DEBUG_TAG, "Canvas: " + m.toShortString());
