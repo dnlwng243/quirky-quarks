@@ -21,7 +21,7 @@ public class Baryon extends Triangle {
     float spin, charge, mass;
 
     public Baryon(float[] pos, float[] vel, int[] quarks) {
-        super(0.08f, pos[0], pos[1]);
+        super(0.04f, pos[0], pos[1]);
 
         setVelocity(vel);
 

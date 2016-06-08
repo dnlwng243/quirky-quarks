@@ -87,7 +87,7 @@ public class Game extends AppCompatActivity {
 
         for(int i = 0; i < 20; i++) {
             Random r = new Random();
-            float[] pos = {r.nextFloat(), r.nextFloat()-0.4f};
+            float[] pos = {r.nextFloat()-0.6f, r.nextFloat()-0.4f};
             float[] vel = {0.0f, 0.0f};
             int[] quarks = {(int)(6*Math.random()), (int)(6*Math.random()), (int)(6*Math.random())};
             gameObjects.add(new Baryon(pos, vel, quarks));

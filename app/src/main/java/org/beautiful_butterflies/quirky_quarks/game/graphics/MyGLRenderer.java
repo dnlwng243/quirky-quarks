@@ -73,7 +73,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
                         // TODO: temp movement sim.
                         obj.setRotation(obj.getRotation() + 3);
-                        obj.getPosition().offset((float)Math.cos(obj.getRotation()), (float)Math.sin(obj.getRotation()));
+                        obj.getPosition().offset((float)(Math.random()-.5)/100f, (float)(Math.random()-.5)/100f);
 
                         objNum--;
                     }
