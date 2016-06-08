@@ -2,11 +2,18 @@ package org.beautiful_butterflies.quirky_quarks;
 
 import android.app.Activity;
 
-        import android.os.Bundle;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
         import android.view.MotionEvent;
         import android.view.View;
         import android.widget.ImageView;
-        import android.widget.RelativeLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+
+        import android.graphics.Bitmap;
+        import android.graphics.Canvas;
+        import android.graphics.Color;
+        import android.graphics.Paint;
 
 public class Sandbox extends Activity {
 
@@ -19,6 +26,15 @@ public class Sandbox extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandbox);
+
+        Paint paint = new Paint();
+        paint.setColor(Color.parseColor("#FFFFFF"));
+        Bitmap bg = Bitmap.createBitmap(600,600,Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bg);
+        canvas.drawRect(100,200,400,400,paint);
+        RelativeLayout ll = (RelativeLayout) findViewById(R.id.draw_area);
+        ll.setBackgroundDrawable(new BitmapDrawable(bg));
+
 
         windowwidth = getWindowManager().getDefaultDisplay().getWidth();
         windowheight = getWindowManager().getDefaultDisplay().getHeight();

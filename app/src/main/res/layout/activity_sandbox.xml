@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
+    android:id="@+id/draw_area"
     >
 
     <ImageView
@@ -24,5 +25,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/electron"
         android:layout_marginLeft="144dp"/>
+
+
 
 </RelativeLayout>
