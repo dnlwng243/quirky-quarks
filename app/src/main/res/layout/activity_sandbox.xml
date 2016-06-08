@@ -28,7 +28,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Place particles here."
         android:id="@+id/caption"
-        android:textColor="#000000"
+        android:textColor="#C0C0C0"
         android:layout_alignTop="@+id/imageView3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="81dp" />
