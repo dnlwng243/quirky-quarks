@@ -28,6 +28,9 @@
             android:name=".StandardModel"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".Sandbox"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".particle_descriptions.UpQuark"
             android:screenOrientation="portrait" />
         <activity
