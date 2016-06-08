@@ -24,6 +24,7 @@ public class Sandbox extends Activity {
         windowheight = getWindowManager().getDefaultDisplay().getHeight();
         final ImageView img = (ImageView) findViewById(R.id.imageView1);
         final ImageView img2 = (ImageView) findViewById(R.id.imageView2);
+        final ImageView img3 = (ImageView) findViewById(R.id.imageView3);
         img.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
@@ -79,6 +80,37 @@ public class Sandbox extends Activity {
                         layoutParams.topMargin = y_cord - 75;
 
                         img2.setLayoutParams(layoutParams);
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
+        img3.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                LayoutParams layoutParams = (LayoutParams) img3
+                        .getLayoutParams();
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        int x_cord = (int) event.getRawX();
+                        int y_cord = (int) event.getRawY();
+
+                        if (x_cord > windowwidth) {
+                            x_cord = windowwidth;
+                        }
+                        if (y_cord > windowheight) {
+                            y_cord = windowheight;
+                        }
+
+                        layoutParams.leftMargin = x_cord - 25;
+                        layoutParams.topMargin = y_cord - 75;
+
+                        img3.setLayoutParams(layoutParams);
                         break;
                     default:
                         break;

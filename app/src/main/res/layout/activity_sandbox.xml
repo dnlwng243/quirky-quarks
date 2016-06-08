@@ -9,13 +9,20 @@
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/bottom_quark" />
+        android:src="@drawable/up_quark" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/top_quark"
+        android:src="@drawable/down_quark"
         android:layout_marginLeft="72dp"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/electron"
+        android:layout_marginLeft="144dp"/>
 
 </RelativeLayout>
