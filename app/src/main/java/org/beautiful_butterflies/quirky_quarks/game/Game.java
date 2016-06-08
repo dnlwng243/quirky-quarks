@@ -91,32 +91,34 @@ public class Game extends AppCompatActivity {
         for(int i = 0; i < 30; i++) {
             Random r = new Random();
             float[] pos = {r.nextFloat()-0.5f, r.nextFloat()-0.4f};
-//            float[] vel = {0.00f, 0.00f};
-            float[] vel = getSpinVel(pos);
+            float[] vel = {0.00f, 0.00f};
+//            float[] vel = getSpinVel(pos);
             int[] quarks = {(int)(6*Math.random()), (int)(6*Math.random()), (int)(6*Math.random())};
             gameObjects.add(new Baryon(pos, vel, quarks));
         }
+
+        drawView.requestRender();
     }
 
     private float[] getSpinVel(float[] pos) {
-        float[] returnArray = {0.03f, 0.03f};
+        float[] returnArray = {0.01f, 0.01f};
         if(pos[0] > 0) {
             if (pos[1] > 0) {
-                returnArray[0] *= 0;
-                returnArray[1] *= -1;
-            }
-            else {
                 returnArray[0] *= -1;
                 returnArray[1] *= 0;
             }
+            else {
+                returnArray[0] *= 1;
+                returnArray[1] *= 1;
+            }
         } else {
             if (pos[1] > 0) {
-                returnArray[0] *= 1;
+                returnArray[0] *= -1;
                 returnArray[1] *= 0;
             }
             else {
-                returnArray[0] *= 0;
-                returnArray[1] *= 1;
+                returnArray[0] *= 1;
+                returnArray[1] *= -1;
             }
         }
 

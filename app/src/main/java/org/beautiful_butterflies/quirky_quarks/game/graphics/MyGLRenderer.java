@@ -24,6 +24,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     float tetraRotation;
 
     float x, y;
+    float[] avgPos;
 
     ArrayList<Baryon> gameObjects;
     ParticleSet particleSet;
@@ -77,6 +78,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
                     particleSet.update();
                     gameObjects = new ArrayList<>(particleSet.getParticles());
 
+                    avgPos = particleSet.averargePosition();
+
                     int objNum = gameObjects.size()-1;
                     while(objNum >= 0) {
                         Baryon obj = gameObjects.get(objNum);
@@ -107,7 +110,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
 
     private void positionMatrix(GL10 gl, GameObject obj) {
         gl.glLoadIdentity();
-        gl.glTranslatef(obj.getPosition()[0] + x, obj.getPosition()[1] + y, -2.0f);
+        gl.glTranslatef(obj.getPosition()[0] - avgPos[0] + x, obj.getPosition()[1] - avgPos[1] + y, -2.0f);
         gl.glRotatef(obj.getRotation(), 0.0f, 0.0f, 1.0f);
     }
 

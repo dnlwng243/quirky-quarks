@@ -9,13 +9,12 @@ import java.util.List;
 public class ParticleSet {
 
     // Simulation settings
-    public final float FRAMELENGTH = 0.8f;
+    public final float FRAMELENGTH = 0.6f;
     public final float G = 6.67408e-11f;
     // Static object declarations
     private List<Baryon> particles;
     private List<Baryon> particleWorkset;
     // Graphics trace history
-    private float frame;
 
     public ParticleSet(List<Baryon> particleList) {
         particles = new ArrayList<>();
@@ -23,8 +22,6 @@ public class ParticleSet {
             particles.add((Baryon) g);
 
         particleWorkset = new ArrayList<>(particles);
-
-        frame = 0;
     }
 
     public void update() {
@@ -39,8 +36,6 @@ public class ParticleSet {
 
         for (Baryon p : particleWorkset)
             adjustPosition(p);
-
-        frame++;
     }
 
     private void adjustPosition(Baryon particle) {
@@ -93,7 +88,7 @@ public class ParticleSet {
         float r = getMagnitude(displacementArray);
 
 //        float fGravityMagnitude = G * (m1 * m2) / ((float)Math.pow(r, 2));
-        float fGravityMagnitude = (r < 1) ? (r) : (0); // TODO: temp strong force spring approx
+        float fGravityMagnitude = (r < 30) ? (r) : (0); // TODO: temp strong force spring approx
         float proportionalityConstant = fGravityMagnitude / r;
 
         return new float[] { proportionalityConstant * displacementArray[0],
@@ -104,11 +99,19 @@ public class ParticleSet {
         return (float)(Math.sqrt(Math.pow(vec[0], 2) + Math.pow(vec[1], 2)));
     }
 
-    public float getFrame() {
-        return frame;
-    }
-
     public List<Baryon> getParticles() {
         return particles;
+    }
+
+    public float[] averargePosition() {
+        float pos[] = {0.0f, 0.0f};
+        for(Baryon b : particles) {
+            pos[0] += b.getPosition()[0];
+            pos[1] += b.getPosition()[1];
+        }
+        pos[0] /= (float) particles.size();
+        pos[1] /= (float) particles.size();
+
+        return pos;
     }
 }
