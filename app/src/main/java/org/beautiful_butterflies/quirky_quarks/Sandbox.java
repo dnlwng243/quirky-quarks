@@ -6,9 +6,7 @@ import android.app.Activity;
         import android.view.MotionEvent;
         import android.view.View;
         import android.widget.ImageView;
-        import android.widget.LinearLayout.LayoutParams;
-
-
+        import android.widget.RelativeLayout.LayoutParams;
 
 public class Sandbox extends Activity {
 
