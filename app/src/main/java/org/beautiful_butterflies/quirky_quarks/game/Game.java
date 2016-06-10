@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,6 +42,8 @@ public class Game extends AppCompatActivity {
     int timerVal;
 
     ImageView background;
+
+    Button resetBtn;
 
     ImageButton pauseBtn, recipeBtn;
     ImageButton pseudoscalarMesonBtn, vectorMesonBtn;
@@ -87,6 +90,7 @@ public class Game extends AppCompatActivity {
         //for(float y = -0.8f; y <= 1.0; y+= 0.05)
         //    for(float x = -1.4f; x <= 1.4; x+= 0.05)
         //        gameObjects.add(new Triangle(0.02f, x, y));
+        gameObjects.clear();
 
         for(int i = 0; i < 30; i++) {
             Random r = new Random();
@@ -97,6 +101,7 @@ public class Game extends AppCompatActivity {
             gameObjects.add(new Baryon(pos, vel, quarks));
         }
 
+        drawView.getRenderer().updateGameObjects(gameObjects);
         drawView.requestRender();
     }
 
@@ -144,6 +149,7 @@ public class Game extends AppCompatActivity {
     private void defineButtons() {
         pauseBtn = (ImageButton) findViewById(R.id.pauseButton);
         recipeBtn = (ImageButton) findViewById(R.id.recipeButton);
+        resetBtn = (Button) findViewById(R.id.resetButton);
 
         pauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,9 +163,16 @@ public class Game extends AppCompatActivity {
                 startActivity(new Intent(Game.this, StandardModel.class));
             }
         });
+        resetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadInitialGameObjects();
+            }
+        });
 
         views.put("pause", pauseBtn);
         views.put("recipe", recipeBtn);
+        views.put("reset", resetBtn);
     }
 
     private void defineUtilityButtons() {
@@ -223,7 +236,8 @@ public class Game extends AppCompatActivity {
                         "meson2",
                         "baryon1",
                         "baryon2",
-                        "recipe"
+                        "recipe",
+                        "reset"
                 });
                 clock.setLayoutParams(clockTopLayout);
                 break;
