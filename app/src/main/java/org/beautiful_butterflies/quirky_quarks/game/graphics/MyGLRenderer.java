@@ -55,7 +55,6 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         gl.glDisable(GL10.GL_DITHER);
 
         tetra.loadTexture(gl, context);
-        gl.glEnable(GL10.GL_TEXTURE_2D);
     }
 
     @Override
@@ -99,6 +98,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
                 }
             case "tetra":
                 {
+                    gl.glEnable(GL10.GL_TEXTURE_2D);
+
                     gl.glLoadIdentity();
                     gl.glTranslatef(0.0f, -0.33f, tetraDist);
                     gl.glRotatef(-90.0f, 1.0f, 0.0f, 0.0f);
@@ -106,6 +107,8 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
                     tetra.draw(gl);
 
 //                    tetraRotation = (tetraRotation - 2.0f) % 360f;
+
+                    gl.glDisable(GL10.GL_TEXTURE_2D);
                 }
                 break;
         }
