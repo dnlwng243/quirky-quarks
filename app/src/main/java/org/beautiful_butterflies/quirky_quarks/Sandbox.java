@@ -4,9 +4,8 @@ import android.app.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
-        import android.view.View;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
@@ -258,16 +257,16 @@ public class Sandbox extends Activity {
                 int electronX = (int) electron.getX();
                 int electronY = (int) electron.getY();
 
-                if (type == 1 && bar == 1 && electronY > 795 && electronY < 1375 && electronX < 865 && electronX > 285) {
+                if (type == 1 && bar == 1 && electronY > 480 && electronY < 925 && electronX < 648 && electronX > 216) {
                     proton.setVisibility(View.GONE);
                     neutron.setVisibility(View.VISIBLE);
                     electron.setVisibility(View.GONE);
                     caption.setVisibility(View.GONE);
                 }
-                if (upQuark1X > 285 && upQuark1X < 865 && upQuark1Y > 795 && upQuark1Y < 1375 &&
-                        upQuark2X > 285 && upQuark2X < 865 && upQuark2Y > 795 && upQuark2Y < 1375
-                        && downQuark1X > 285 && downQuark1X < 865 && downQuark1Y > 795 &&
-                        downQuark1Y < 1375 && bar == 0) {
+                if (upQuark1X > 216 && upQuark1X < 648 && upQuark1Y > 480 && upQuark1Y < 925 &&
+                        upQuark2X > 216 && upQuark2X < 648 && upQuark2Y > 480 && upQuark2Y < 925
+                        && downQuark1X > 216 && downQuark1X < 648 && downQuark1Y > 480 &&
+                        downQuark1Y < 925 && bar == 0) {
                     proton.setVisibility(View.VISIBLE);
                     upQuark1.setVisibility(View.GONE);
                     upQuark2.setVisibility(View.GONE);
@@ -276,10 +275,10 @@ public class Sandbox extends Activity {
                     type = 1;
                     caption.setVisibility(View.GONE);
                 }
-                if (upQuark1X > 285 && upQuark1X < 865 && upQuark1Y > 795 && upQuark1Y < 1375 &&
-                        upQuark2X > 285 && upQuark2X < 865 && upQuark2Y > 795 && upQuark2Y < 1375
-                        && downQuark2X > 285 && downQuark2X < 865 && downQuark2Y > 795 &&
-                        downQuark2Y < 1375 && bar == 0) {
+                if (upQuark1X > 216 && upQuark1X < 648 && upQuark1Y > 480 && upQuark1Y < 925 &&
+                        upQuark2X > 216 && upQuark2X < 648 && upQuark2Y > 480 && upQuark2Y < 925
+                        && downQuark2X > 216 && downQuark2X < 648 && downQuark2Y > 480 &&
+                        downQuark2Y < 925 && bar == 0) {
                     proton.setVisibility(View.VISIBLE);
                     upQuark1.setVisibility(View.GONE);
                     upQuark2.setVisibility(View.GONE);
@@ -288,12 +287,12 @@ public class Sandbox extends Activity {
                     bar = 1;
                     type = 1;
                 }
-                if (downQuark1X > 285 && downQuark1X < 865 && downQuark1Y > 795 && downQuark1Y <
-                        1375 &&
-                        downQuark2X > 285 && downQuark2X < 865 && downQuark2Y > 795 && downQuark2Y <
-                        1375
-                        && upQuark1X > 285 && upQuark1X < 865 && upQuark1Y > 795 &&
-                        upQuark1Y < 1375 && bar == 0) {
+                if (downQuark1X > 216 && downQuark1X < 648 && downQuark1Y > 480 && downQuark1Y <
+                        925 &&
+                        downQuark2X > 216 && downQuark2X < 648 && downQuark2Y > 480 && downQuark2Y <
+                        925
+                        && upQuark1X > 216 && upQuark1X < 648 && upQuark1Y > 480 &&
+                        upQuark1Y < 925 && bar == 0) {
                     neutron.setVisibility(View.VISIBLE);
                     downQuark1.setVisibility(View.GONE);
                     downQuark2.setVisibility(View.GONE);
@@ -301,12 +300,12 @@ public class Sandbox extends Activity {
                     caption.setVisibility(View.GONE);
                     bar = 1;
                 }
-                if (downQuark1X > 285 && downQuark1X < 865 && downQuark1Y > 795 && downQuark1Y <
-                        1375 &&
-                        downQuark2X > 285 && downQuark2X < 865 && downQuark2Y > 795 && downQuark2Y <
-                        1375
-                        && upQuark2X > 285 && upQuark2X < 865 && upQuark2Y > 795 &&
-                        upQuark2Y < 1375 && bar == 0) {
+                if (downQuark1X > 216 && downQuark1X < 648 && downQuark1Y > 480 && downQuark1Y <
+                        925 &&
+                        downQuark2X > 216 && downQuark2X < 648 && downQuark2Y > 480 && downQuark2Y <
+                        925
+                        && upQuark2X > 216 && upQuark2X < 648 && upQuark2Y > 480 &&
+                        upQuark2Y < 925 && bar == 0) {
                     neutron.setVisibility(View.VISIBLE);
                     downQuark1.setVisibility(View.GONE);
                     downQuark2.setVisibility(View.GONE);
@@ -336,6 +335,5 @@ public class Sandbox extends Activity {
         });
 
     }
-
 
 }
